@@ -241,7 +241,7 @@ void exitMsg(){
     cout << "============= Terima kasih sudah bermain =============" <<endl;
 }
 
-void displayAnswer(string finalAnswers[7680]){
+void displayAnswer(string finalAnswers[1000]){
     int i = 0; 
     bool empty = false;
     while(finalAnswers[i] != "#" && !empty){
@@ -261,7 +261,7 @@ void displayAnswer(string finalAnswers[7680]){
     }
 }
 
-void saveFile(string finalAnswers[7680]){
+void saveFile(string finalAnswers[1000]){
     int options;
     while(true){
         cout << "Apakah anda mau menyimpan jawaban anda? "<<endl;
@@ -305,10 +305,10 @@ void saveFile(string finalAnswers[7680]){
     }
 }
 
-bool isDuplicate(string answers[7680],string results){
+bool isDuplicate(string answers[1000],string results){
     bool empty = false;
     int i = 0; 
-    while(!empty && i < 7680){
+    while(!empty && i < 1000){
         if(answers[i] == results){
             return true;
         }else if(answers[i] == "#"){
@@ -324,7 +324,7 @@ void calculateCard(string card){
     string allOperators[64];
     string allOperations[1536];
     
-    string finalAnswers[7680];
+    string finalAnswers[1000];
     int totalAnswer = 0;
     auto start = chrono :: high_resolution_clock::now();
     ios_base::sync_with_stdio(false);
@@ -335,7 +335,7 @@ void calculateCard(string card){
     operators(allOperators);
 
     getAllOperations(allCardsCombination,allOperators,allOperations);
-    createEmptyArray(7680,finalAnswers);
+    createEmptyArray(1000,finalAnswers);
     for(int i = 0; i < 1536; i++){
         float count[5];
         string results[5];
@@ -343,7 +343,7 @@ void calculateCard(string card){
         for(int j = 0; j < 5; j++){
             if(count[j] == 24.00){
                 if(!isDuplicate(finalAnswers,results[j])){
-                    insertFirst(7680,finalAnswers,results[j]);
+                    insertFirst(1000,finalAnswers,results[j]);
                     totalAnswer += 1;
                 }
             }
