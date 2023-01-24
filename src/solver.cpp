@@ -5,6 +5,22 @@ using std::ofstream;
 #include <chrono>
 #include <time.h>
 
+void welcomeMsg(){
+    cout << " __________________________________________________________" <<endl;
+    cout << "|          _____________         __        __              |" <<endl;
+    cout << "|         |____________ |       |  |      |  |             |" <<endl;
+    cout << "|                     | |       |  |      |  |             |" <<endl;
+    cout << "|                     | |       |  |      |  |             |" <<endl;
+    cout << "|         ____________| |       |  |______|  |             |" <<endl;
+    cout << "|        | | ___________|       |__________  |             |" <<endl;
+    cout << "|        | |                              |  |             |" <<endl;  
+    cout << "|        | |                              |  |             |" <<endl;
+    cout << "|        | |____________                  |  |             |" <<endl;
+    cout << "|        |______________|                 |__|             |" <<endl;
+    cout << "| ________________________________________________________ |" <<endl;
+    cout << "\n" <<endl;
+}
+
 void createEmptyArray(int length, string *results){
     for(int i = 0; i < length;i++){
         results[i] = "#";
@@ -369,6 +385,7 @@ void calculateCard(string card){
 
 int main(){
     string cards[4];
+    welcomeMsg();
     int options = displayMenu();
     if(options == 1){
         string card = userInput(cards);
