@@ -1,10 +1,10 @@
 # Tucil1_13521139
 
-## Deskripsi Singkat 
+## **General Description** 
 
-Permainan kartu 24 adalah permainan dimana para pemain melakukan operasi aritmatika kepada 4 buah kartu yang ada sampai mendapatkan angka 24. Operasi aritmatika yang digunakan adalah penjumlahan, pengurangan, perkalian, dan pembagian. Program ini bertujuan untuk membantu menyelesaikan permain kartu 24 dengan algoritma brute force. 
+24 Card Game is a game where all players do arithmethic operations to 4 cards that was selected by a moderator or by one of the players until all those cards can reach number 24. Arithmethic operations that can be used are simple operators like addition, substraction, multiplication, and division. Moreover, players are allowed to use all variations of parentheses to reach 24. This progam is designed to help people to solve the 24 card game within a short ammount of time. 
 
-## Program's Requirement 
+## **Program's Requirement**
 Since this program is build with C++ programming language, you need to install **C++ compilers**
 
 ## **How to Run Program** 
@@ -36,7 +36,7 @@ If you have followed all steps tu run program, but the main.exe doesn't work as 
 5. Run the program <br>
 `$ solver.exe`
 
-## Feature on Program 
+## **Feature on Program**
 
 | Point | Yes | No |
 |-----|-----|------|
@@ -46,7 +46,7 @@ If you have followed all steps tu run program, but the main.exe doesn't work as 
 |4. The program can display all correct solutions | &check; | |
 |5. Program can save all solutions on .txt file if the user request it | &check; | |
 
-## Author 
+## **Author** 
 
 Name : Nathania Calista Djunaedi <br>
 NIM : 13521139
