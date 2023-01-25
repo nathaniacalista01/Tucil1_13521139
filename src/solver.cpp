@@ -134,7 +134,7 @@ bool isValid(string cards[4]){
             if(cards[i] == "10"){
                 cards[i] = "0";
             }else{
-                cout << "Input masih salah di kartu ";
+                cout << "Kartu masih salah ";
                 cout << cards[i] <<endl;
                 return false;
             }
@@ -171,19 +171,48 @@ string randomizeCard(){
     return results;
 }
 
+int getCards(string input,string cards[4]){
+    int i =0;
+    int cardCount = 0;
+    string temp = "";   
+    int stringSize = input.size();
+    for(int i = 0; i < stringSize; i++){
+        if((int)input[i] == 32){
+            if(cardCount <= 3){
+                cards[cardCount] = temp;
+                temp = "";
+                cardCount += 1;
+            }else{
+                return cardCount;
+            }
+        }else{
+            temp += input[i];
+        }
+    }
+    if(cardCount == 3){
+        cards[cardCount] = temp;
+    }
+    return cardCount;
+}
+
 string userInput(string cards[4]){
     bool allValid = true;
     string card;
     do
     {
         cout << "Masukkan kombinasi kartu yang anda inginkan : " <<endl;
-        cin >> cards[0] >> cards[1] >>cards[2] >>cards[3];
-        allValid = isValid(cards);
-        card = "";
-        for(int i =0; i < 4;i++){
-            card += cards[i];
+        getline(cin >> ws, card);
+        if( getCards(card,cards) > 3){
+            cout << "Jumlah kartu yang anda masukkan masih salah, silakan ulangi lagi!" <<endl;
+            allValid = false;
+        }else{
+            allValid = isValid(cards);
         }
     } while (!allValid);
+    card = "";
+    for(int i = 0;i < 4; i++){
+        card += cards[i];
+    }
     return card;
 }
 
@@ -316,8 +345,6 @@ void saveFile(string finalAnswers[1000]){
         }else{
             cout << "Tidak bisa membuka file "<<endl;
         }
-    }else{
-        exitMsg();
     }
 }
 
@@ -377,24 +404,44 @@ void calculateCard(string card){
     cout << "Time taken by program is : " << fixed << duration << " seconds" <<endl;
     if(totalAnswer != 0){
         saveFile(finalAnswers);
-    }else{
-        exitMsg();
     }
     
 }
 
-int main(){
-    string cards[4];
-    welcomeMsg();
-    int options = displayMenu();
-    if(options == 1){
-        string card = userInput(cards);
-        calculateCard(card);
-    }else if(options == 2){
-        string card = randomizeCard();
-        calculateCard(card);
-    }else{
-        exitMsg();
+char playAgain(){
+    char play;
+    while(true){
+        cout << "Permainan sudah selesai, apakah anda ingin bermain lagi? (y/n)" <<endl;
+        cin >> play;
+
+        if(play == 'y' || play == 'n'){
+            break;
+        }else{
+            cout << "Huruf yang berlaku hanya y dan n, silakan coba lagi " << endl;
+        }
     }
+    return play;
+}
+
+int main(){
+    while(true){
+        string cards[4];
+        welcomeMsg();
+        int options = displayMenu();
+        if(options == 1){
+            string card = userInput(cards);
+            calculateCard(card);
+        }
+        else if(options == 2){
+            string card = randomizeCard();
+            calculateCard(card);
+        }else{
+            break;
+        }
+        if(playAgain() == 'n'){
+            break;
+        }
+    }
+    exitMsg();
     return 0;
 }
